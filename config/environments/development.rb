@@ -1,5 +1,5 @@
 SemanticRails::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -17,15 +17,15 @@ SemanticRails::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Use mailcatcher (mailcatcher.me) locally
-  config.action_mailer.default_url_options = { host: "localhost:8080" }
+  config.action_mailer.default_url_options = { host: 'localhost:8080' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations
-  #config.active_record.migration_error = :page_load
+  # config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
