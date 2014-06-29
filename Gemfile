@@ -3,13 +3,13 @@ source "https://rubygems.org"
 # Server and Base Application
 gem "rails", "4.1.0"
 gem "thread_safe", "~> 0.2.0"
-gem "therubyracer", platforms: :ruby
 gem "hashugar", github: "alex-klepa/hashugar"
 gem "devise", "~> 3.0.0"
 gem "cancan"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
+gem "omniauth-github"
 
 # Data stores
 gem "mongoid", github: "mongoid/mongoid"

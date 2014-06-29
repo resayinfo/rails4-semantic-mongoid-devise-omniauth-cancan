@@ -16,5 +16,6 @@
         .menu
           = nav_link t('auth.login_with_email'), new_user_session_path, icon: 'user'
           = nav_link t('auth.register_with_email'), new_user_registration_path, icon: 'mail'
+          = nav_link t('auth.with_github'), user_omniauth_authorize_path(:github), icon: 'github sign'
           = nav_link t('auth.with_facebook'), user_omniauth_authorize_path(:facebook), icon: 'facebook sign'
           = nav_link t('auth.with_twitter'), user_omniauth_authorize_path(:twitter), icon: 'twitter sign'
