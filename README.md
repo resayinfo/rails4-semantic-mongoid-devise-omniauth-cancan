@@ -14,15 +14,11 @@ You can use this project as a starting point for a Rails web application. It's T
 * jGrowl for more sensible flash messages with no config required
 
 ## Installation
-* clone this repo
-* Edit `db/seed.rb` to customize admin user settings then run `rake db:seed` to create admin user
-* Edit `config/initializers/devise.rb` to customize your omniauth providers:
-  ```ruby
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email,user_birthday,read_stream'
-  config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET']
-  ```
-* Edit `config/config.yml` to customize your application settings, they will be available via `AppConfig` object within your app, e.g. `AppConfig.default_role`
-* Run with `unicorn -p 2222` and browse at `http://localhost:2222`
+- Clone this repo
+- Edit `db/seed.rb` to customize admin user settings then run `rake db:seed` to create admin user
+- Edit `config/initializers/devise.rb` to customize your omniauth providers (set env vars or disable, etc)
+- Edit `config/config.yml` to customize your application settings, they will be available via `AppConfig` object within your app, e.g. `AppConfig.default_role`
+- Run with `unicorn -p 2222` and browse at `http://localhost:2222`
 
 ## Simple Form
 By default, your form fields will be wrapped using simple form, however there are a few custom wrappers you can use as well:
