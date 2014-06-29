@@ -17,3 +17,14 @@ en:
     with_github: Login with Github
     with_facebook: Login with Facebook
     with_twitter: Login with Twitter
+
+  registration:
+    incomplete: Please finish your account registration before continuing
+
+  error:
+    general: We're sorry, something went wrong, please try again.
+    unauthorized: Not authorized.
+
+  user:
+    created: User was successfully updated.
+    updated: User was successfully updated.

@@ -1,8 +1,13 @@
+#
+# Users Controller
+#
+# Let users manage their accounts
+#
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    authorize! :index, @user, message: t('error.unauthorized')
     @users = User.all
   end
 
@@ -17,12 +22,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    authorize! :create, @user, :message => 'Not authorized as an administrator.'
+    authorize! :create, @user, message: t('error.unauthorized')
 
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: t('user.created') }
       else
         format.html { render action: 'new' }
       end
@@ -30,11 +35,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
-    respond_to do |format|
+    authorize! :update, @user, message: t('error.unauthorized')
 
+    puts user_params.inspect
+
+    respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: t('user.updated') }
       else
         format.html { render action: 'edit' }
       end
@@ -42,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
+    authorize! :destroy, @user, message: t('error.unauthorized')
 
     @user.destroy
     respond_to do |format|
@@ -51,13 +58,19 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :roles => [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :first_name,
+      :last_name,
+      roles: []
+    )
+  end
 end

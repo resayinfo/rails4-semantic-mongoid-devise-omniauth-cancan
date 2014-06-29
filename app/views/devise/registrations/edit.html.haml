@@ -1,17 +1,18 @@
 .ui.grid.two.column.page
   .column
-    %h1
-      Edit #{resource_name.to_s.humanize}
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = f.input :first_name, autofocus: true
-      = f.input :last_name
-      = f.input :email, required: true
-      - if current_user.password_required?
-        = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-        = f.input :password_confirmation, required: false
-        = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-      = f.button :submit, 'Update'
+    = render 'devise/registrations/form'
   .column
+    %h2 Quick Links
+
+    .ui.bulleted.list
+      - if devise_mapping.confirmable? && controller_name != 'confirmations'
+        = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: 'item'
+      - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+        = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: 'item'
+      - if devise_mapping.omniauthable?
+        - resource_class.omniauth_providers.each do |provider|
+          = link_to "Connect your #{provider.to_s.titleize} account", omniauth_authorize_path(resource_name, provider), class: 'item'
+
     %h2 Cancel my account
     %p
       Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}.

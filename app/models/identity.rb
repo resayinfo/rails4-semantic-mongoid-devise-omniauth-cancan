@@ -1,3 +1,6 @@
+#
+# Identity
+#
 class Identity
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -18,28 +21,26 @@ class Identity
 
   index({ uid: 1, provider: 1 }, { unique: true })
 
-
   def self.from_omniauth(auth)
-    identity = where(auth.slice(:provider, :uid)).first_or_create do |identity|
-      identity.provider     = auth.provider
-      identity.uid          = auth.uid
-      identity.token        = auth.credentials.token
-      identity.secret       = auth.credentials.secret if auth.credentials.secret
-      identity.expires_at   = auth.credentials.expires_at if auth.credentials.expires_at
-      identity.email        = auth.info.email if auth.info.email
-      identity.image        = auth.info.image if auth.info.image
-      identity.nickname     = auth.info.nickname
-      identity.first_name   = auth.info.first_name
-      identity.last_name    = auth.info.last_name
+    identity = where(auth.slice(:provider, :uid)).first_or_create do |id|
+      id.provider   = auth.provider
+      id.uid        = auth.uid
+      id.token      = auth.credentials.token
+      id.secret     = auth.credentials.secret if auth.credentials.secret
+      id.expires_at = auth.credentials.expires_at if auth.credentials.expires_at
+      id.email      = auth.info.email if auth.info.email
+      id.image      = auth.info.image if auth.info.image
+      id.nickname   = auth.info.nickname
+      id.first_name = auth.info.first_name
+      id.last_name  = auth.info.last_name
     end
+
     identity.save!
 
-    if !identity.persisted?
-      redirect_to root_url, alert: "Something went wrong, please try again."
-    end
+    return false unless identity.persisted?
+
     identity
   end
-
 
   def find_or_create_user(current_user)
     if current_user && self.user == current_user
@@ -77,6 +78,5 @@ class Identity
   end
 
   def create_user
-
   end
 end

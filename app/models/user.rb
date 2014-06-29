@@ -1,3 +1,6 @@
+#
+# User
+#
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -5,7 +8,6 @@ class User
   include User::Roles
 
   has_many :identities
-
 
   field :email, type: String
   field :image, type: String
@@ -18,5 +20,4 @@ class User
   def full_name
     "#{first_name} #{last_name}"
   end
-
 end
