@@ -53,19 +53,18 @@ body {
 h1, h2, h3, h4, h5, h6 {
   @extend %font_header;
   font-weight: 100;
-  margin: .25em 0 .15em 0;
-  padding: .25em 0 .15em 0;
+  margin: 1rem 0 .5rem 0;
+  padding: 1rem 0 .5rem 0;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
   text-shadow: 0 1px 0 #000;
 }
 
 h2 {
   border-bottom: 1px dashed #444;
-  font-size: 1.6em;
-  margin: .65em 0 1em 0;
+  font-size: 1.6rem;
 }
 
 blockquote, q
@@ -86,7 +85,7 @@ blockquote, q
     float: right;
     font-size: 1.25em;
     max-width: 50%;
-    margin: .75em 0 0 1em;
+    margin: .75rem 0 0 1em;
   }
 }
 
@@ -98,9 +97,9 @@ q:before, q:after
 }
 
 p {
-  font-size: .875em;
-  line-height: 1.75em;
-  padding: .25em 0 .5em;
+  font-size: .875rem;
+  line-height: 1.75rem;
+  padding: .25rem 0 .5rem;
 
   q {
     background: none;
@@ -145,7 +144,7 @@ label {
  */
 #main {
   ul {
-    font-size: .875em;
+    font-size: .875rem;
     margin: 0 0 1.5em 18px;
 
     ul, ol {
@@ -167,7 +166,7 @@ label {
   }
 
   ol {
-    font-size: .875em;
+    font-size: .875rem;
     margin: 0 0 1em 18px;
 
     ul, ol {
@@ -176,7 +175,7 @@ label {
 
     li {
       list-style: decimal;
-      margin: 5px 0;
+      margin: .5rem 0;
 
       ul li {
         list-style: square;
